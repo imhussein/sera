@@ -1,0 +1,50 @@
+<div class="text-center">
+  <h3>All Posts</h3>
+</div>
+<a href="/admin/posts/add" class="btn bg-main text-white">Add New Post</a>
+
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Image</th>
+      <th>Category</th>
+      <th>User</th>
+      <th>Created At</th>
+      <th>View Post</th>
+      <th>Publish</th>
+      <th>Draft</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each posts}}
+      <tr>
+        <td>{{title}}</td>
+        <td style="width: 10%"><img src="/assets/uploads/posts/{{image}}" alt="IMAGE" width="100%" class="img-thumbnail"></td>
+        <td>{{category}}</td>
+        <td>{{user}}</td>
+        <td><p>{{formatDate created_at day="numeric" month="numeric" year="numeric"}}</p></td>
+        <td>
+          <a href="/post/{{_id}}" class="btn btn-sm bg-main text-white" target="_blank">View Posts</a>
+        </td>
+        <td>
+          <a href="/admin/posts/publish/{{_id}}" class="btn btn-secondary btn-sm">Publish</a>
+        </td>
+        <td>
+          <a href="/admin/posts/draft/{{_id}}" class="btn btn-secondary btn-sm">Draft</a>
+        </td>
+        <td>
+          <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-primary">Edit</a>
+        </td>
+        <td>
+          <form action="/admin/posts/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

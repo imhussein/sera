@@ -1,0 +1,16 @@
+<div class="latest-posts mt-5">
+  <h2 class="card-header mb-2">
+    Latest Posts
+  </h2>
+{{#each latestposts}}
+  <div class="card mb-4">
+    <div class="card-img-top">
+      <img class="img-thumbnail" width="100%" src="/assets/uploads/posts/{{image}}" alt="Image">
+    </div>
+    <h3 class="card-title"><a href="{{_id}}" class="btn btn-link">{{title}}</a></h3>
+    <div class="card-footer text-center">
+      <small class="text-muted">{{formatDate created_at day="numeric" month="numeric" year="numeric"}}</small>
+    </div>
+  </div>
+{{/each}}
+</div>

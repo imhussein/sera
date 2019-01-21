@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <h3 class="card-header text-center">Edit Comment</h3>
+      <div class="card-body">
+        <form action="/admin/comments/edit/{{comment._id}}?_method=PUT" method="POST">
+          <input type="hidden" name="_method" value="PUT">
+          <div class="form-group">
+            <textarea name="comment" class="form-control" id="comment" cols="30" rows="10">{{comment.comment}}</textarea>
+          </div>
+          <input type="submit" value="Update Comment" class="btn btn-success btn-block">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

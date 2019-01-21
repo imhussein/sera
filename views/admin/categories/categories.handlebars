@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <h3 class="card-header text-center">Add Category</h3>
+      <div class="card-body">
+        <form action="/admin/categories" method="POST">
+          <div class="form-group">
+            <input type="text" name="category" id="category" class="form-control form-control-lg" placeholder="Add Category" value="{{category}}">
+          </div>
+          <input type="submit" value="Add Category" class="btn btn-block btn-success">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each categories}}
+          <tr>
+            <td>{{category_title}}</td>
+            <td>
+              <a href="/admin/category/{{_id}}" class="btn btn-primary btn-sm">
+                Edit
+              </a>
+            </td>
+            <td>
+              <form action="/admin/categories/delete/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

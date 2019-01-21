@@ -1,0 +1,56 @@
+<div class="mb-2">
+  <h3 class="text-center">All Users</h3>
+</div>
+<a href="/admin/users/add" class="btn bg-main text-white">Add New User</a>
+<table class="table-striped table mt-4">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Approve</th>
+      <th>UnApprove</th>
+      <th>Make Admin</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{username}}</td>
+        <td>{{email}}</td>
+        <td>{{role}}</td>
+        <td>
+          <form action="/admin/users/approve/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Make User" class="btn btn-sm btn-secondary">
+          </form>
+        </td>
+        <td>
+          <form action="/admin/users/unapprove/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="UnApprove" class="btn btn-sm btn-secondary">
+          </form>
+        </td>
+        <td>
+          <form action="/admin/users/setasadmin/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Make Admin" class="btn btn-sm btn-info">
+          </form>
+        </td>
+        <td>
+          <a href="/admin/users/edit/{{_id}}" class="btn btn-primary btn-sm">Edit</a>
+        </td>
+        <td>
+          <form action="/admin/users/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

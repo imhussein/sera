@@ -1,0 +1,86 @@
+<div class="row mt-5 mb-5">
+  <div class="col-md-9">
+    <div class="mb-3">
+      <h3 class="single-post-info mb-3">
+        <a href="/post/{{post._id}}" class="post-link">{{post.title}}</a>
+      </h3>
+      <span class="text-muted  mr-3"><i class="far fa-user icon"></i> <a class="text-muted font-weight-bold" href="/author/{{post.user}}">{{post.user}}</a></span>
+      <span class="text-muted"><i class="far fa-clock icon"></i></span><span class="text-muted">{{formatDate post.created_at day="numeric" month="numeric" year="numeric"}}</span>
+    </div>
+    <img src="/assets/uploads/posts/{{post.image}}" class="img-thumbnail" width="93%">
+    <div class="mt-3 mb-3">
+      <p class="text-muted pr-5 lead">{{post.details}}</p>
+    </div>
+    <div class="categories">
+      <a href="/categories/{{post.category}}" class="btn btn-secondary btn-sm">
+        <i class="fas fa-tag" style="vertical-align: middle"></i> {{post.category}}
+      </a>
+    </div>
+    <hr>
+    <div class="related-posts mt-4 mb-5">
+      <h3 class="mb-1">Related Posts</h3>
+      <hr class="bg-hr">
+      <div class="row">
+        {{#each posts}}
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card related-post-card">
+              <div class="img-holder">
+                <img src="/assets/uploads/posts/{{image}}" class="img-thumbnail card-img-top">
+                <a href="/post/{{_id}}" class="img-link"></a>
+              </div>
+              <h5 class="card-header"><a style="text-decoration: none;" class="font-weight-bold text-dark realted-post-link" href="/post/{{_id}}">{{title}}</a></h5>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="comment-section mt-4 mb-4">
+        <div class="card">
+          <div class="card">
+            <h3 class="card-header">LEAVE A REPLY</h3>
+            <div class="card-body">
+              <form action="/post/{{post._id}}" method="POST">
+                <div class="form-group">
+                  <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Your Commment"></textarea>
+                </div>
+                {{#if user}}
+                  &nbsp;
+                {{else}}
+                <div class="form-group">
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" name="name" id="name" class="form-control form-control-lg" placeholder="Your Name">
+                    </div>
+                    <div class="col">
+                      <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Your email">
+                    </div>
+                  </div>
+                </div>
+                {{/if}}
+                <input type="submit" value="Post Comment" class="text-white btn bg-main">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{#if comments}}
+      <div class="comments mb-4 mt-3">
+        <h4 class="p-2">{{commentsCount}}</h4>
+        {{#each comments}}
+          <div class="jumbotron mb-3 py-3">
+            <h5 class="font-weight-bold">{{name}}</h5>
+            <div class="mb-2">
+              <span class="text-muted"><i class="far fa-clock icon"></i></span><span class="text-muted">{{formatDate createdat day="numeric" month="numeric" year="numeric"}}</span>
+            </div>
+            <div>
+              <p>{{comment}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="col-md-3">
+    {{> _sidebar}}
+  </div>
+</div>

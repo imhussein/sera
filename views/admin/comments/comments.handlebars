@@ -1,0 +1,48 @@
+<div class="mb-4">
+  <h3 class="text-center">All Comments</h3>
+</div>
+<table class="table-striped table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Created</th>
+      <th>Post In</th>
+      <th>Approve</th>
+      <th>UnApprove</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each comments}}
+      <tr>
+        <td><p class="font-weight-bold">{{name}}</p> </td>
+        <td><span class="text-muted pr-2">{{trimString comment 0 40}}</span></td>
+        <td>{{formatDate createdat day="numeric" month="numeric" year="numeric"}}</td>
+        <td><a href="/post/{{post_id}}" target="_blank">{{trimString post_title 0 30}}</a></td>
+        <td>
+          <form action="/admin/comments/approve/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Approve" class="btn btn-sm btn-secondary">
+          </form>
+        </td>
+        <td>
+          <form action="/admin/comments/unapprove/{{_id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="UnApprove" class="btn btn-sm btn-secondary">
+          </form>
+        </td>
+        <td>
+          <a href="/admin/comments/edit/{{_id}}" class="btn btn-sm btn-primary">Edit</a>
+        </td>
+        <td>
+          <form action="/admin/comments/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+          </form>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

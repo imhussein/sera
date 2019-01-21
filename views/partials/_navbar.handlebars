@@ -1,0 +1,88 @@
+{{#if adminRoute}}
+  <nav class="navbar navbar-expand-sm bg-main py-0 mb-3">
+    <div class="container">
+      <a href="/admin/dashboard" class="navbar-brand text-white">Admin Panel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link text-white dropdown-toggle">
+              Posts
+            </a>
+            <div class="dropdown-menu">
+              <a href="/admin/posts" class="dropdown-item">All Posts</a>
+              <a href="/admin/posts/add" class="dropdown-item">Add Post</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" data-toggle="dropdown" class="nav-link text-white dropdown-toggle">
+              Users
+            </a>
+            <div class="dropdown-menu">
+              <a href="/admin/users" class="dropdown-item">All Users</a>
+              <a href="/admin/users/add" class="dropdown-item">Add User</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/categories" class="nav-link text-white">
+              Categories
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/comments" class="nav-link text-white">
+              Comments
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/" class="nav-link text-white">Visit Site</a>
+          </li>
+          <li class="nav-item">
+            <a href="/users/logout" class="nav-link text-white">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{{else}}
+<nav class="navbar navbar-expand-sm bg-main py-0 mb-3">
+  <div class="container">
+    <a href="/" class="navbar-brand text-white">Sera</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="/" class="nav-link text-white">Home</a>
+        </li>
+        {{#each categories}}
+          <li class="nav-item">
+            <a href="/categories/{{category_title}}" class="nav-link text-white" style="text-transform: capitalize">{{category_title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {{#if user}}
+        <li class="nav-item">
+          <a href="/admin/dashboard" class="nav-link text-white">Admin Area</a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/logout" class="nav-link text-white">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a href="/users/login" class="nav-link text-white">Login</a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/register" class="nav-link text-white">Register</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>
+{{/if}}
