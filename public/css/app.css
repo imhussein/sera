@@ -1,0 +1,97 @@
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.bg-main {
+  background-color: #563d7c;
+}
+
+.bg-secondary-2 {
+  background-color: #ffce1e !important;
+}
+
+.btn {
+  outline: none;
+  border: none;
+}
+
+.img-holder {
+  position: relative;
+}
+
+.img-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.post-link:hover {
+  text-decoration: none;
+}
+
+.icon {
+  margin-right: 7px;
+}
+
+.bg-hr {
+  border: 1px solid #000;
+  margin: 10px 0 20px;
+}
+
+.related-post-card {
+  transition: all 0.2s ease-out;
+}
+
+.related-post-card:hover a.realted-post-link {
+  color: #0056b3 !important;
+}
+
+.preloader {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: white;
+  overflow: hidden;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 20;
+  background-color: #563d7c;
+  border-radius: 50%;
+  animation: buble 1s linear infinite;
+}
+
+@keyframes buble {
+  from {
+    opacity: 0;
+    transform: scale(0); 
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+.user-avatar-img {
+  width: 150px;
+  border-radius: 50%;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+
+div.jumbotron {
+  border: 1px solid #bec8d2;
+  background-color: #fff;
+}
